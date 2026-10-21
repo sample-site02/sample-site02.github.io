@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Member Portal｜参考サイト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B1020; --bg2:#121A33; --panel:rgba(255,255,255,.055); --line:rgba(255,255,255,.12);
+  --ink:#EEF1F8; --sub:#9AA3BD; --gold:#D4B373; --gold2:#F1DDAE; --cyan:#58D3E8;
+  --c-start:#58D3E8; --c-learn:#7C9CFF; --c-sch:#E6B66E; --c-leader:#D4B373; --c-admin:#B58BFF; --c-team:#5EE0B5; --c-me:#C9D2EA;
+  --glow:0 0 0 1px rgba(255,255,255,.08), 0 10px 30px rgba(0,0,0,.45);
+  --f-head:"Shippori Mincho B1","Yu Mincho","Hiragino Mincho ProN",serif;
+  --f-body:"Noto Sans JP","Hiragino Sans","Meiryo",sans-serif;
+  --f-en:"Montserrat","Noto Sans JP",sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;color:var(--ink);font-family:var(--f-body);background:var(--bg);}
+body{min-height:100vh;background:
+  radial-gradient(900px 500px at 12% -5%,rgba(88,211,232,.16),transparent 60%),
+  radial-gradient(800px 600px at 100% 30%,rgba(181,139,255,.14),transparent 60%),
+  radial-gradient(700px 500px at 40% 110%,rgba(212,179,115,.12),transparent 60%),
+  linear-gradient(180deg,#0B1020,#0E1428 60%,#0B1020);}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:40px 40px;mask-image:radial-gradient(circle at 50% 30%,#000 30%,transparent 80%);}
+.demo-bar{position:sticky;top:0;z-index:30;background:rgba(11,16,32,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);color:var(--sub);font-size:11.5px;text-align:center;padding:7px 12px;line-height:1.6;}
+.demo-bar b{color:var(--gold2);font-weight:700;letter-spacing:.04em;}
+header{position:relative;max-width:440px;margin:0 auto;padding:18px 16px 0;display:flex;align-items:center;gap:12px;}
+.logo{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex:none;
+  background:linear-gradient(140deg,rgba(212,179,115,.25),rgba(88,211,232,.18));border:1px solid rgba(212,179,115,.55);box-shadow:var(--glow);}
+.logo svg{width:24px;height:24px;stroke:var(--gold2);}
+.brand{font-family:var(--f-en);font-weight:700;letter-spacing:.22em;font-size:15px;color:var(--gold2);}
+header p{margin:3px 0 0;font-size:11.5px;color:var(--sub);}
+header p b{color:var(--ink);font-weight:500;}
+.roles{position:relative;max-width:440px;margin:16px auto 0;padding:0 16px;}
+.roles .lb{display:flex;justify-content:space-between;align-items:baseline;font-size:11.5px;color:var(--sub);margin-bottom:7px;}
+.roles .lb span{font-family:var(--f-en);letter-spacing:.18em;font-size:10px;color:var(--gold);}
+.seg{display:flex;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px;}
+.seg button{flex:1;border:0;background:none;padding:9px 4px;border-radius:9px;font-family:var(--f-body);font-weight:700;font-size:12.5px;color:var(--sub);cursor:pointer;letter-spacing:.04em;}
+.seg button.on{background:linear-gradient(135deg,#E9D3A1,#C9A45E);color:#1A1406;box-shadow:0 4px 14px rgba(212,179,115,.35);}
+.stage{position:relative;width:100%;max-width:440px;margin:6px auto 0;touch-action:none;user-select:none;-webkit-user-select:none;}
+.orbit{position:absolute;left:0;top:0;border:1px solid rgba(88,211,232,.22);border-radius:50%;pointer-events:none;box-shadow:0 0 40px rgba(88,211,232,.08) inset;}
+.orbit::after{content:"";position:absolute;inset:-22px;border:1px dashed rgba(212,179,115,.16);border-radius:50%;}
+.bub{position:absolute;left:0;top:0;width:100px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:grab;will-change:transform;z-index:2;}
+.bub .ball{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;position:relative;
+  background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.16),rgba(255,255,255,.03) 60%),rgba(18,26,51,.85);
+  border:1.5px solid var(--c);box-shadow:0 0 18px color-mix(in srgb,var(--c) 35%,transparent),var(--glow);}
+.bub .ball::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid color-mix(in srgb,var(--c) 30%,transparent);}
+.bub .ball svg{width:28px;height:28px;stroke:var(--c);}
+.bub .nm{font-size:11.5px;font-weight:700;line-height:1.35;text-align:center;white-space:pre;color:var(--ink);letter-spacing:.03em;
+  background:rgba(11,16,32,.72);border:1px solid var(--line);border-radius:7px;padding:2px 7px;}
+.bub.center .ball{width:76px;height:76px;border-color:var(--gold);box-shadow:0 0 26px rgba(212,179,115,.35),var(--glow);}
+.bub.center .ball svg{stroke:var(--gold2);width:32px;height:32px;}
+.bub.moon{width:110px;}
+.bub.moon .ball{width:42px;height:42px;}
+.bub.moon .ball svg{width:19px;height:19px;}
+.bub.moon .nm{font-size:10px;}
+.bub.grab{cursor:grabbing;z-index:8;}
+.bub.grab .ball{box-shadow:0 0 34px color-mix(in srgb,var(--c) 60%,transparent),var(--glow);}
+.help{position:absolute;left:0;top:0;width:70px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:grab;z-index:1;touch-action:none;}
+.help .hb{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(18,26,51,.9);border:1px solid var(--gold);box-shadow:0 0 14px rgba(212,179,115,.3);}
+.help .hb svg{width:15px;height:15px;stroke:var(--gold2);}
+.help .ht{font-size:9.5px;font-weight:700;color:var(--gold2);background:rgba(11,16,32,.75);border-radius:5px;padding:0 5px;letter-spacing:.04em;}
+.help.grab{z-index:8;cursor:grabbing;}
+.hint{position:relative;max-width:440px;margin:0 auto;padding:0 16px;text-align:center;font-size:11.5px;color:var(--sub);letter-spacing:.03em;}
+section.feat{position:relative;max-width:920px;margin:40px auto 0;padding:0 16px 46px;}
+.eyebrow{display:block;text-align:center;font-family:var(--f-en);font-weight:600;font-size:11px;letter-spacing:.32em;color:var(--gold);margin-bottom:10px;}
+section.feat h2{font-family:var(--f-head);font-weight:700;font-size:clamp(21px,4.6vw,30px);text-align:center;margin:0 0 12px;line-height:1.55;letter-spacing:.04em;}
+section.feat h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;}
+section.feat .lead{text-align:center;color:var(--sub);font-size:13.5px;margin:0 auto 26px;line-height:1.95;max-width:560px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+.card{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:16px;padding:20px 18px;overflow:hidden;}
+.card::before{content:"";position:absolute;left:0;top:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6;}
+.card .no{font-family:var(--f-en);font-size:10.5px;letter-spacing:.24em;color:var(--gold);}
+.card .ic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;border:1px solid rgba(88,211,232,.4);margin:10px 0 0;background:rgba(88,211,232,.07);}
+.card .ic svg{width:21px;height:21px;stroke:var(--cyan);}
+.card h3{font-size:15px;margin:12px 0 6px;letter-spacing:.03em;}
+.card p{margin:0;font-size:12.8px;color:var(--sub);line-height:1.85;}
+footer{position:relative;text-align:center;font-size:11px;color:var(--sub);padding:18px 16px 34px;border-top:1px solid var(--line);max-width:920px;margin:0 auto;line-height:1.8;}
+footer .en{font-family:var(--f-en);letter-spacing:.24em;color:var(--gold);font-size:10px;display:block;margin-bottom:4px;}
+/* 開いたときの画面 */
+.sheet-bg{position:fixed;inset:0;background:rgba(5,8,18,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:40;display:none;align-items:flex-end;justify-content:center;}
+.sheet-bg.on{display:flex;}
+.sheet{width:100%;max-width:540px;max-height:86vh;overflow:auto;background:linear-gradient(180deg,#141C38,#0F1630);border:1px solid var(--line);border-bottom:0;
+  border-radius:20px 20px 0 0;padding:18px 16px 28px;animation:up .28s ease-out;box-shadow:0 -10px 40px rgba(0,0,0,.5);}
+@media (min-width:700px){.sheet-bg{align-items:center;}.sheet{border-radius:20px;border-bottom:1px solid var(--line);}}
+@keyframes up{from{transform:translateY(40px);opacity:0;}to{transform:none;opacity:1;}}
+.sheet .top{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+.sheet .top .ball{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--c);display:grid;place-items:center;background:rgba(255,255,255,.04);box-shadow:0 0 16px color-mix(in srgb,var(--c) 35%,transparent);}
+.sheet .top .ball svg{width:20px;height:20px;stroke:var(--c);}
+.sheet .top h3{margin:0;font-size:16.5px;flex:1;letter-spacing:.04em;}
+.sheet .top h3 small{display:block;font-family:var(--f-en);font-size:9.5px;letter-spacing:.24em;color:var(--gold);font-weight:600;}
+.sheet .x{border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--ink);border-radius:9px;padding:7px 14px;font-weight:700;cursor:pointer;font-family:var(--f-body);font-size:12.5px;}
+.sheet .note{font-size:11.8px;color:var(--sub);border-left:2px solid var(--gold);padding:4px 0 4px 10px;margin-top:14px;line-height:1.8;}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;}
+.kpi div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;}
+.kpi b{display:block;font-family:var(--f-en);font-size:20px;color:var(--gold2);}
+.kpi span{font-size:10.5px;color:var(--sub);}
+.steps{display:flex;flex-direction:column;gap:8px;}
+.step{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13.5px;}
+.step .ck{width:24px;height:24px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);display:grid;place-items:center;font-size:12px;color:#0B1020;flex:none;cursor:pointer;font-weight:700;}
+.step.done .ck{background:var(--cyan);border-color:var(--cyan);}
+.step.done span{color:var(--sub);}
+.step .no{font-family:var(--f-en);font-size:10.5px;color:var(--gold);letter-spacing:.1em;width:22px;}
+.bar{height:6px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin:8px 0 14px;}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--gold));border-radius:99px;transition:width .4s;box-shadow:0 0 12px rgba(88,211,232,.6);}
+.big{font-family:var(--f-en);font-size:30px;font-weight:700;color:var(--gold2);}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+.tbl th,.tbl td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);}
+.tbl th{font-family:var(--f-en);font-size:10px;letter-spacing:.16em;color:var(--gold);font-weight:600;background:rgba(255,255,255,.03);}
+.mini{height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden;width:80px;display:inline-block;vertical-align:middle;margin-right:6px;}
+.mini i{display:block;height:100%;background:linear-gradient(90deg,var(--c-team),var(--cyan));}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;}
+.cal .h{text-align:center;color:var(--gold);font-family:var(--f-en);font-size:10px;letter-spacing:.1em;}
+.cal .d{background:var(--panel);border:1px solid var(--line);border-radius:8px;min-height:52px;padding:3px;}
+.cal .d .n{font-family:var(--f-en);font-weight:600;color:var(--sub);font-size:10px;}
+.cal .d .ev{display:block;margin-top:2px;border-radius:4px;padding:1px 3px;color:#0B1020;font-size:9px;line-height:1.3;font-weight:700;}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:11.5px;margin:0 0 10px;color:var(--sub);}
+.legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--c);margin-right:5px;vertical-align:-1px;}
+.tree{font-size:13px;line-height:2;}
+.tree ul{list-style:none;margin:0;padding-left:18px;border-left:1px solid rgba(212,179,115,.35);}
+.tree>ul{border-left:0;padding-left:0;}
+.tree li .p{display:inline-flex;align-items:center;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:1px 10px;}
+.tag{font-size:9.5px;border-radius:4px;padding:0 6px;color:#0B1020;font-weight:700;}
+.list{display:flex;flex-direction:column;gap:8px;}
+.list div{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 12px;font-size:13.5px;}
+.list div::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);flex:none;}
+.toast{position:fixed;left:50%;top:48px;transform:translate(-50%,-10px);background:rgba(20,28,56,.95);border:1px solid rgba(212,179,115,.5);color:var(--ink);font-size:12.5px;
+  border-radius:10px;padding:9px 16px;opacity:0;transition:.25s;z-index:60;pointer-events:none;max-width:calc(100vw - 32px);text-align:center;}
+.toast.on{opacity:1;transform:translate(-50%,0);}
+</style>
+</head>
+<body>
+<div class="demo-bar"><b>DEMO</b>　本ページはデモンストレーション用の参考サイトです。掲載の社名・人名・数値はすべて架空のものです。</div>
+
+<header>
+  <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div>
+  <div>
+    <div class="brand">MEMBER PORTAL</div>
+    <p>サンプル株式会社 ／ ログイン中：<b>山田 花子</b> 様</p>
+  </div>
+</header>
+
+<div class="roles">
+  <div class="lb">閲覧権限の切替（権限に応じて表示項目が変わります）<span>ACCESS</span></div>
+  <div class="seg" id="seg">
+    <button data-r="member" class="on">一般社員</button>
+    <button data-r="leader">マネージャー</button>
+    <button data-r="admin">管理者</button>
+  </div>
+</div>
+
+<div class="stage" id="stage"></div>
+<p class="hint">各アイコンを選択すると、詳細画面が表示されます。</p>
+
+<section class="feat">
+  <span class="eyebrow">FEATURES</span>
+  <h2>組織と人材の「今」を、<br><em>ひとつのダッシュボード</em>で。</h2>
+  <p class="lead">分散したスプレッドシートを統合し、閲覧権限に応じて必要な情報だけを最適な形で表示します。現場の運用を変えることなく、情報共有と進捗管理を効率化します。</p>
+  <div class="grid">
+    <div class="card"><span class="no">01</span><div class="ic" data-i="sheet"></div><h3>既存データをそのまま活用</h3><p>名簿・予定・進捗は、現在お使いのGoogleスプレッドシートを基盤とします。データ移行の負担はありません。</p></div>
+    <div class="card"><span class="no">02</span><div class="ic" data-i="lock"></div><h3>権限別の表示制御</h3><p>一般社員・マネージャー・管理者など、役職に応じてアクセスできる機能と情報を細かく設定できます。</p></div>
+    <div class="card"><span class="no">03</span><div class="ic" data-i="chart"></div><h3>育成進捗の可視化</h3><p>オンボーディングや研修のステップを体系化し、本人と上長が同じ画面で進捗を確認できます。</p></div>
+    <div class="card"><span class="no">04</span><div class="ic" data-i="tree"></div><h3>組織構造の可視化</h3><p>レポートラインや紹介関係を、ツリー形式でわかりやすく表示します。</p></div>
+    <div class="card"><span class="no">05</span><div class="ic" data-i="cal"></div><h3>スケジュールの一元管理</h3><p>新人研修会・定例会議・役員ミーティングなど、複数の予定表を一つのカレンダーに集約します。</p></div>
+    <div class="card"><span class="no">06</span><div class="ic" data-i="device"></div><h3>マルチデバイス対応</h3><p>専用アプリは不要です。スマートフォン・PCのブラウザから、いつでも安全にアクセスできます。</p></div>
+  </div>
+</section>
+<footer><span class="en">REFERENCE SITE</span>本ページは、画面構成と操作感をご確認いただくための参考サイトです。<br>実際の機能・デザインは、貴社のご要件に合わせて設計いたします。</footer>
+
+<div class="sheet-bg" id="sheetBg"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------------- 線のアイコン ---------------- */
+const SV = d => `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const ICON = {
+  user:  SV('<circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1.2-3.8 4.2-5.6 7.5-5.6s6.3 1.8 7.5 5.6"/>'),
+  mail:  SV('<rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/>'),
+  book:  SV('<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5"/>'),
+  route: SV('<circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h5a3 3 0 0 0 0-6h-2a3 3 0 0 1 0-6h5"/>'),
+  cal:   SV('<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>'),
+  chart: SV('<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'),
+  shield:SV('<path d="M12 3l7 3v6c0 4.2-3 7.6-7 9-4-1.4-7-4.8-7-9V6z"/><path d="M9 12l2 2 4-4"/>'),
+  star:  SV('<path d="M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8L12 16.9l-5.3 2.7 1-5.8-4.2-4.1 5.9-.9z"/>'),
+  flag:  SV('<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>'),
+  help:  SV('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.7M12 17h.01"/>'),
+  sheet: SV('<rect x="4" y="3.5" width="16" height="17" rx="2"/><path d="M4 9h16M4 14.5h16M10 3.5v17"/>'),
+  lock:  SV('<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>'),
+  tree:  SV('<rect x="9" y="3" width="6" height="4.5" rx="1"/><rect x="3" y="16.5" width="6" height="4.5" rx="1"/><rect x="15" y="16.5" width="6" height="4.5" rx="1"/><path d="M12 7.5v4.5M6 16.5V12h12v4.5"/>'),
+  device:SV('<rect x="3" y="4" width="13" height="10" rx="1.5"/><path d="M6.5 18h6"/><rect x="17" y="8" width="4.5" height="12" rx="1"/>')
+};
+document.querySelectorAll(".card .ic").forEach(e=>e.innerHTML = ICON[e.dataset.i]);
+
+/* ---------------- サンプルのデータ（すべて架空） ---------------- */
+const STEPS = ["就業規則・社内ルールの確認","新人研修会（第1回）の受講","初回業務レポートの提出","上長との1on1面談","新人研修会（第2回）の受講","担当業務の独り立ち"];
+let done = [true,true,true,false,false,false];
+const MEMBERS = [
+  {n:"佐藤 健",  t:"営業第一部",p:5},{n:"鈴木 美咲",t:"営業第一部",p:3},{n:"高橋 翔",t:"営業第二部",p:6},
+  {n:"田中 里奈",t:"営業第二部",p:2},{n:"伊藤 大地",t:"経営企画部",p:4},{n:"渡辺 結衣",t:"経営企画部",p:1}
+];
+const EVENTS = [ /* 日, 名前, 色, 対象 */
+  [3,"定例会議","#7C9CFF","all"],[7,"新人研修会","#58D3E8","all"],[10,"定例会議","#7C9CFF","all"],
+  [14,"マネージャー会議","#D4B373","leader"],[17,"定例会議","#7C9CFF","all"],[21,"新人研修会","#58D3E8","all"],
+  [24,"定例会議","#7C9CFF","all"],[27,"役員ミーティング","#B58BFF","admin"],[28,"マネージャー会議","#D4B373","leader"]
+];
+
+/* ---------------- 丸の一覧（権限で出し分け） ---------------- */
+const ITEMS = [
+  {id:"me",    ic:"user",  nm:"マイ\nダッシュボード",     en:"DASHBOARD",  c:"--c-me",   center:true},
+  {id:"invite",ic:"mail",  nm:"メンバー招待",           en:"INVITATION", c:"--c-me",   moon:true},
+  {id:"learn", ic:"book",  nm:"研修\nコンテンツ",       en:"LEARNING",   c:"--c-learn"},
+  {id:"road",  ic:"route", nm:"育成\nロードマップ",     en:"ROADMAP",    c:"--c-start"},
+  {id:"sch",   ic:"cal",   nm:"スケジュール",           en:"SCHEDULE",   c:"--c-sch"},
+  {id:"team",  ic:"chart", nm:"チーム\n進捗管理",       en:"TEAM",       c:"--c-team"},
+  {id:"admin", ic:"shield",nm:"管理\nコンソール",       en:"ADMIN",      c:"--c-admin", need:"admin"},
+  {id:"leader",ic:"star",  nm:"マネージャー\n専用",     en:"MANAGER",    c:"--c-leader",need:"leader"},
+  {id:"start", ic:"flag",  nm:"オン\nボーディング",       en:"ONBOARDING", c:"--c-start"}
+];
+const ROLE = {member:"一般社員", leader:"マネージャー", admin:"管理者"};
+let role = "member";
+const allow = it => !it.need || (it.need === "leader" ? role !== "member" : role === "admin");
+
+/* ---------------- 置き場所 ---------------- */
+const stage = document.getElementById("stage");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let W = 360, H = 560, nodes = [], drag = null, lastDrag = -1e9;
+const ORBIT = {rx:100, ry:92, sec:16};
+function layout(){
+  W = Math.min(stage.clientWidth || 360, 440);
+  const ring = nodes.filter(n=>!n.it.center && !n.it.moon);
+  const rx = Math.max(W*.39, 132), ry = Math.max(W*.6, 215);
+  H = ry*2 + 150; stage.style.height = H + "px";
+  const cx = W/2, cy = H/2 - 6;
+  nodes.forEach(n=>{ if(n.it.center){ n.hx = cx; n.hy = cy; } });
+  ring.forEach((n,i)=>{
+    const a = -Math.PI/2 + i*2*Math.PI/ring.length;
+    n.hx = cx + Math.cos(a)*rx; n.hy = cy + Math.sin(a)*ry;
+  });
+  orbitEl.style.width = ORBIT.rx*2 + "px"; orbitEl.style.height = ORBIT.ry*2 + "px";
+  orbitEl.style.transform = `translate(${cx-ORBIT.rx}px,${cy-ORBIT.ry+14}px)`;
+  /* 小さな「操作ガイド」は、輪の外の右下で、ほかの丸と重ならない場所に置きます */
+  const boxes = nodes.filter(n=>!n.it.moon).map(n=>[n.hx - 64, n.hy - 52, n.hx + 64, n.hy + 72]);
+  let best = null, bs = Infinity;
+  for(let x = W - 36; x >= W*.5; x -= 4) for(let y = cy; y <= cy + ry + 40; y += 4){
+    const bx = [x - 34, y - 18, x + 34, y + 34]; let a = 0;
+    boxes.forEach(r=>{ const ox = Math.min(bx[2], r[2]) - Math.max(bx[0], r[0]), oy = Math.min(bx[3], r[3]) - Math.max(bx[1], r[1]); if(ox > 0 && oy > 0) a += ox*oy; });
+    const sc = a*100 + Math.hypot(x - (W - 36), y - (cy + ry*.45));
+    if(sc < bs){ bs = sc; best = [x, y]; }
+  }
+  help.hx = best[0]; help.hy = best[1];
+}
+const orbitEl = document.createElement("div"); orbitEl.className = "orbit"; stage.appendChild(orbitEl);
+
+function build(){
+  nodes.forEach(n=>n.el.remove());
+  nodes = ITEMS.filter(allow).map((it,i)=>{
+    const el = document.createElement("div");
+    el.className = "bub" + (it.moon ? " moon" : "") + (it.center ? " center" : "");
+    el.style.setProperty("--c", `var(${it.c})`);
+    el.innerHTML = `<span class="ball">${ICON[it.ic]}</span><span class="nm">${it.nm}</span>`;
+    stage.appendChild(el);
+    const n = {it, el, x:W/2, y:H/2, vx:(Math.random()-.5)*6, vy:(Math.random()-.5)*6, ph:i*1.7, s:.4};
+    hook(n); return n;
+  });
+  layout();
+}
+
+/* ---------------- 指でつまむ・押す ---------------- */
+function grabbable(obj, el, onTap){
+  let sx, sy, ox, oy, pid = null, moved = false;
+  el.addEventListener("pointerdown", e=>{
+    if(e.button !== undefined && e.button !== 0) return;
+    pid = e.pointerId; sx = e.clientX; sy = e.clientY; moved = false;
+    const r = stage.getBoundingClientRect(); ox = e.clientX - r.left - obj.x; oy = e.clientY - r.top - obj.y;
+    try{ el.setPointerCapture(pid); }catch(_){}
+  });
+  el.addEventListener("pointermove", e=>{
+    if(pid !== e.pointerId) return;
+    if(!moved && Math.hypot(e.clientX-sx, e.clientY-sy) > 8){ moved = true; obj.held = true; drag = obj; el.classList.add("grab"); }
+    if(moved){ const r = stage.getBoundingClientRect(); obj.x = e.clientX - r.left - ox; obj.y = e.clientY - r.top - oy; }
+  });
+  const end = e=>{
+    if(pid !== e.pointerId) return; pid = null;
+    if(moved){ obj.held = false; drag = null; el.classList.remove("grab"); lastDrag = performance.now(); }
+    else onTap();
+  };
+  el.addEventListener("pointerup", end); el.addEventListener("pointercancel", ()=>{ pid = null; obj.held = false; drag = null; el.classList.remove("grab"); });
+}
+function hook(n){ grabbable(n, n.el, ()=>{ if(performance.now() - lastDrag > 300) openSheet(n.it); }); }
+
+/* 小さな「操作ガイド」 */
+const help = {x:null, y:null, vx:0, vy:0, hx:0, hy:0, held:false};
+help.el = document.createElement("div"); help.el.className = "help";
+help.el.innerHTML = `<span class="hb">${ICON.help}</span><span class="ht">操作ガイド</span>`;
+stage.appendChild(help.el);
+grabbable(help, help.el, ()=>openSheet({id:"help", ic:"help", nm:"操作ガイド", en:"GUIDE", c:"--gold"}));
+
+/* ---------------- 動き（ばね・ふわふわ・よける） ---------------- */
+function frame(t){
+  const me = nodes.find(n=>n.it.center), moon = nodes.find(n=>n.it.moon);
+  if(me && moon && !moon.held){
+    const a = reduce ? Math.PI/2 : Math.PI/2 + t/1000*2*Math.PI/ORBIT.sec;
+    moon.hx = me.hx + Math.cos(a)*ORBIT.rx; moon.hy = me.hy + 14 + Math.sin(a)*ORBIT.ry;
+  }
+  for(const n of nodes){
+    if(n.held) continue;
+    let ax = (n.hx - n.x)*.055, ay = (n.hy - n.y)*.055;
+    const push = (src, R, mix)=>{
+      const dx = n.x - src.x, dy = n.y - src.y, d = Math.hypot(dx,dy) || 1;
+      if(d < R){ const f = (R-d)/R*7; ax += dx/d*f; ay += dy/d*f; }
+      if(mix){ ax += (-dy/d)*.35 + (Math.random()-.5)*.9; ay += (dx/d)*.35 + (Math.random()-.5)*.9; }
+    };
+    if(moon && n !== moon && n !== me) push({x:moon.x, y:moon.y+14}, 140, false);
+    if(drag && drag !== n) push(drag, 140, true);
+    n.vx = (n.vx + ax)*.84; n.vy = (n.vy + ay)*.84; n.x += n.vx; n.y += n.vy;
+    if(n.lw == null) n.lw = n.el.querySelector(".nm").offsetWidth;
+    const lim = Math.max(48, n.lw/2 + 6);   /* 名前が画面の外に出ないように */
+    n.x = Math.min(Math.max(n.x, lim), W - lim);
+  }
+  for(const n of nodes){
+    n.s += (1 - n.s)*.15;
+    const fy = reduce || n.held ? 0 : Math.sin(t/650 + n.ph)*5, fx = reduce || n.held ? 0 : Math.cos(t/900 + n.ph)*2.5;
+    const hw = n.it.moon ? 55 : 50, hh = n.it.moon ? 27 : (n.it.center ? 45 : 40);
+    n.el.style.transform = `translate(${n.x - hw + fx}px,${n.y - hh + fy}px) scale(${n.held ? 1.12 : n.s})`;
+  }
+  if(help.x == null){ help.x = help.hx; help.y = help.hy; }
+  if(!help.held){ help.vx = (help.vx + (help.hx - help.x)*.05)*.85; help.vy = (help.vy + (help.hy - help.y)*.05)*.85; help.x += help.vx; help.y += help.vy; }
+  const hy = reduce || help.held ? 0 : Math.sin(t/700 + 2)*5;
+  help.el.style.transform = `translate(${help.x - 35}px,${help.y - 16 + hy}px) scale(${help.held ? 1.12 : 1})`;
+  requestAnimationFrame(frame);
+}
+
+/* ---------------- 押したときに開く画面（見本） ---------------- */
+const bg = document.getElementById("sheetBg"), sheet = document.getElementById("sheet");
+bg.addEventListener("click", e=>{ if(e.target === bg) closeSheet(); });
+function closeSheet(){ bg.classList.remove("on"); }
+function openSheet(it){
+  const body = PAGES[it.id] ? PAGES[it.id]() : "";
+  sheet.style.setProperty("--c", `var(${it.c})`);
+  sheet.innerHTML = `<div class="top"><span class="ball">${ICON[it.ic]}</span><h3><small>${it.en}</small>${it.nm.replace("\n","")}</h3><button class="x" onclick="closeSheet()">閉じる</button></div>${body}`;
+  bg.classList.add("on");
+  if(it.id === "road") hookSteps();
+}
+const pct = ()=>Math.round(done.filter(Boolean).length / STEPS.length * 100);
+const avg = ()=>Math.round(MEMBERS.reduce((a,m)=>a+m.p,0) / (MEMBERS.length*6) * 100);
+const PAGES = {
+  me: ()=>`<div class="kpi"><div><b>${pct()}%</b><span>育成進捗</span></div><div><b>2</b><span>今月の研修</span></div><div><b>${ROLE[role]}</b><span>閲覧権限</span></div></div>
+    <div class="list"><div>氏名：山田 花子（営業第一部）</div><div>登録情報の確認・変更</div><div>通知設定</div></div>
+    <p class="note">ご本人の登録情報と、育成状況のサマリーを確認できます。</p>`,
+  invite: ()=>`<div class="list"><div>招待メッセージのテンプレートをコピー</div><div>登録用URLを共有</div><div>招待状況の確認</div></div>
+    <p class="note">新しく参加されるメンバーへの案内を、定型化して素早く送付できます。</p>`,
+  start: ()=>`<div class="list"><div>STEP 1　ポータルの全体像を把握する</div><div>STEP 2　ご自身の登録情報を確認する</div><div>STEP 3　研修コンテンツを開始する</div></div>
+    <p class="note">新規メンバーが迷わず業務を開始できるよう、最初に取り組む内容を順序立てて提示します。</p>`,
+  learn: ()=>`<div class="list"><div>就業規則・社内ルール（PDF）</div><div>研修動画　第1回〜第3回</div><div>よくあるご質問（FAQ）</div></div>
+    <p class="note">研修資料・動画を体系的に整理し、受講順に沿って閲覧できるようにします。</p>`,
+  road: ()=>`<div style="display:flex;align-items:baseline;gap:10px"><span class="big" id="pp">${pct()}%</span><span style="color:var(--sub);font-size:12px">現在の育成進捗</span></div>
+    <div class="bar"><i id="pb" style="width:${pct()}%"></i></div>
+    <div class="steps">${STEPS.map((s,i)=>`<div class="step ${done[i]?"done":""}" data-i="${i}"><span class="no">${String(i+1).padStart(2,"0")}</span><span class="ck">✓</span><span>${s}</span></div>`).join("")}</div>
+    <p class="note">各ステップを選択すると、完了状態を切り替えられます（デモのため保存はされません）。</p>`,
+  sch: ()=>{
+    const cells = []; for(let i=0;i<3;i++) cells.push('<div></div>');
+    for(let d=1; d<=30; d++){
+      const evs = EVENTS.filter(e=>e[0]===d && (e[3]==="all" || (e[3]==="leader" && role!=="member") || (e[3]==="admin" && role==="admin")));
+      cells.push(`<div class="d"><span class="n">${d}</span>${evs.map(e=>`<span class="ev" style="background:${e[2]}">${e[1]}</span>`).join("")}</div>`);
+    }
+    return `<div class="legend"><span style="--c:#58D3E8">新人研修会</span><span style="--c:#7C9CFF">定例会議</span>${role!=="member"?'<span style="--c:#D4B373">マネージャー会議</span>':""}${role==="admin"?'<span style="--c:#B58BFF">役員ミーティング</span>':""}</div>
+      <div class="cal">${["SUN","MON","TUE","WED","THU","FRI","SAT"].map(w=>`<div class="h">${w}</div>`).join("")}${cells.join("")}</div>
+      <p class="note">複数の予定表を一つのカレンダーに集約します。閲覧権限により、表示される予定が自動で切り替わります。</p>`;
+  },
+  team: ()=>`<div class="kpi"><div><b>${MEMBERS.length}</b><span>対象メンバー</span></div><div><b>${avg()}%</b><span>平均進捗</span></div><div><b>${MEMBERS.filter(m=>m.p===6).length}</b><span>完了者</span></div></div>
+    <table class="tbl"><tr><th>NAME</th><th>DEPT.</th><th>PROGRESS</th></tr>
+    ${MEMBERS.map(m=>`<tr><td>${m.n}</td><td>${m.t}</td><td><span class="mini"><i style="width:${Math.round(m.p/6*100)}%"></i></span>${m.p}/6</td></tr>`).join("")}</table>
+    <p class="note">チーム全体の進捗を一覧で把握し、フォローが必要なメンバーを早期に発見できます。</p>`,
+  leader: ()=>`<div class="tree"><ul><li><span class="p">山本 社長 <span class="tag" style="background:#B58BFF">役員</span></span>
+      <ul><li><span class="p">中村 部長 <span class="tag" style="background:#D4B373">マネージャー</span></span>
+        <ul><li><span class="p">佐藤 健</span></li><li><span class="p">鈴木 美咲</span></li></ul></li>
+      <li><span class="p">小林 部長 <span class="tag" style="background:#D4B373">マネージャー</span></span>
+        <ul><li><span class="p">高橋 翔</span></li><li><span class="p">田中 里奈</span>
+          <ul><li><span class="p">渡辺 結衣</span></li></ul></li></ul></li></ul></li></ul></div>
+    <p class="note">レポートラインをツリー形式で可視化し、組織構造を直感的に把握できます。</p>`,
+  admin: ()=>`<div class="list"><div>メンバー管理・権限設定</div><div>予定表・資料のリンク設定</div><div>名簿の一括インポート</div><div>役員ミーティングの予定管理</div></div>
+    <p class="note">管理者専用のコンソールです。スプレッドシートを直接編集することなく、各種設定を変更できます。</p>`,
+  help: ()=>`<div class="list"><div>各アイコンを選択すると、詳細画面が表示されます</div><div>上部の「閲覧権限の切替」で、表示内容の違いをご確認いただけます</div></div>
+    <p class="note">本番環境では、図解付きの操作ガイドページもご用意できます。</p>`
+};
+function hookSteps(){
+  sheet.querySelectorAll(".step").forEach(el=>el.addEventListener("click", ()=>{
+    const i = +el.dataset.i; done[i] = !done[i]; el.classList.toggle("done", done[i]);
+    document.getElementById("pp").textContent = pct() + "%"; document.getElementById("pb").style.width = pct() + "%";
+  }));
+}
+window.closeSheet = closeSheet;
+
+/* ---------------- 権限の切りかえ ---------------- */
+const toast = document.getElementById("toast");
+document.getElementById("seg").addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(!b) return;
+  role = b.dataset.r;
+  document.querySelectorAll("#seg button").forEach(x=>x.classList.toggle("on", x === b));
+  build();
+  toast.textContent = {member:"一般社員の表示に切り替えました",leader:"マネージャーの表示に切り替えました（マネージャー専用メニューを追加）",admin:"管理者の表示に切り替えました（管理コンソールを追加）"}[role];
+  toast.classList.add("on"); clearTimeout(toast.tm); toast.tm = setTimeout(()=>toast.classList.remove("on"), 2400);
+});
+addEventListener("resize", layout);
+build();
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
